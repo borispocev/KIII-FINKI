@@ -1,9 +1,7 @@
 node {
     def app
     stage('Clone repository') {
-        steps {
-                git credentialsId: 'github-bp', url: 'https://github.com/borispocev/KIII-FINKI', branch: 'main'
-            }
+        checkout scm
     }
     stage('Build image') {
        app = docker.build("borispocev/KIII-FINKI")
